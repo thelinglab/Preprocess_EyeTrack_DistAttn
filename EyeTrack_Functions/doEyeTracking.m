@@ -58,6 +58,10 @@ else
     errror('Do not use remote mode. It sucks!')
 end
 
+%% do baseline corection
+eyeData.trial.xDeg_bl = doBaseline_EyeTrack(eyeData.trial.xDeg,eyeData.trial.times,settings.seg.bl_start,settings.seg.bl_end);
+eyeData.trial.yDeg_bl = doBaseline_EyeTrack(eyeData.trial.yDeg,eyeData.trial.times,settings.seg.bl_start,settings.seg.bl_end);
+
 %% Remove continuos data from eyeData structure
 eyeData = rmfield(eyeData,'gx');
 eyeData = rmfield(eyeData,'gy');
